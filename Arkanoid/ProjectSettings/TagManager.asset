@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bloque1
+  - Bloque2
+  - Bloque 3
+  - Bloque 4
+  - Bloque 5
+  - Bloque 6
+  - Bloque 7
   layers:
   - Default
   - TransparentFX
