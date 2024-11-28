@@ -18,6 +18,6 @@ public class GameOver : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        GameManager.
+        GameManager.Instance.RepetirNivel();
     }
 }

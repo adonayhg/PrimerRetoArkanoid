@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BloqueEspecial
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 571ae1e9bae5f0f43bc56ac00129cac4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloque 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

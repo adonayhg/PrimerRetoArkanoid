@@ -7,11 +7,18 @@ public class Pelota : MonoBehaviour
     private Rigidbody   pelotaRb;
     [SerializeField] private Vector3 velocidadInicial;
     bool enMovimiento;
+    int vidasBloques = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         pelotaRb = GetComponent<Rigidbody>();
+
+        if (gameObject.CompareTag("Bloque1"))
+            {
+
+            }
+
     }
 
     // Update is called once per frame
@@ -31,5 +38,11 @@ public class Pelota : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Bloque2"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
+
 }
