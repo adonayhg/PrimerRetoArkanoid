@@ -4,35 +4,41 @@ using UnityEngine;
 
 public class Pelota : MonoBehaviour
 {
-    private Rigidbody   pelotaRb;
+    private Rigidbody pelotaRb;
     [SerializeField] private Vector3 velocidadInicial;
-    bool enMovimiento;
-    int vidasBloques = 1;
+    [SerializeField] private float velocidadFija = 10f;
+    [SerializeField] private int colisiones = 0;
+    [SerializeField] private int colisionesBloque2 = 2;
 
-    // Start is called before the first frame update
+    private bool enMovimiento;
+
     void Start()
     {
         pelotaRb = GetComponent<Rigidbody>();
-
-        if (gameObject.CompareTag("Bloque1"))
-            {
-
-            }
-
+        pelotaRb.velocity = Vector3.zero;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Jump") && !enMovimiento)
         {
             transform.parent = null;
-            pelotaRb.velocity = velocidadInicial;
+            pelotaRb.velocity = velocidadInicial.normalized * velocidadFija;
             enMovimiento = true;
+        }
+
+        if (enMovimiento)
+        {
+            pelotaRb.velocity = pelotaRb.velocity.normalized * velocidadFija;
+        }
+
+        if (enMovimiento)
+        {
+            CambioVelocidad();
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bloque1"))
         {
@@ -41,8 +47,32 @@ public class Pelota : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bloque2"))
         {
-            Destroy(collision.gameObject);
+            colisiones++;
+            if (colisiones >= colisionesBloque2)
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+
+
+    }*/
+
+    void CambioVelocidad()
+    {
+        float velocidadDelta = 1f;
+        float velocidadMin = 0.2f;
+
+        if (Mathf.Abs(pelotaRb.velocity.x) < velocidadMin)
+        {
+            velocidadDelta = Random.value < 0.5f ? velocidadDelta : -velocidadDelta;
+            pelotaRb.velocity += new Vector3(velocidadDelta, 0f, 0f);
+        }
+
+        if (Mathf.Abs(pelotaRb.velocity.y) < velocidadMin)
+        {
+            velocidadDelta = Random.value < 0.5f ? velocidadDelta : -velocidadDelta;
+            pelotaRb.velocity += new Vector3(0f, velocidadDelta, 0f);
         }
     }
-
 }
+
