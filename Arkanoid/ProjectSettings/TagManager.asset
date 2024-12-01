@@ -12,6 +12,7 @@ TagManager:
   - Bloque 6
   - Bloque 7
   - Pelota
+  - LimiteInferior
   layers:
   - Default
   - TransparentFX

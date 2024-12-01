@@ -1,46 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
-    int numeroBloques;
-    public static GameManager Instance { get; private set; }
+    [SerializeField] GameObject pantallaGameOver;
 
-    private void Awake()
+    void Start()
     {
-        if (Instance != null && Instance != this)
+        if(pantallaGameOver != null)
         {
-            Instance = this;
-        }
-        else
-        {
-            Instance = this;
+            pantallaGameOver.SetActive(false);
+
         }
     }
 
-    private void Start()
+    public void MostrarGameOver()
     {
-        numeroBloques = GameObject.FindGameObjectsWithTag("Bloque1").Length;
-    }
-
-    public void BloquesDesruidos()
-    {
-        numeroBloques--;
-        if(numeroBloques <= 0)
+        if (pantallaGameOver != null)
         {
-            SiguienteNivel();
+            pantallaGameOver.SetActive(true);
         }
+        Time.timeScale = 0f;
     }
 
-    void SiguienteNivel()
+    public void ReiniciarNivel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void RepetirNivel()
+
+    public void CerrarJuego()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Application.Quit();
     }
 }

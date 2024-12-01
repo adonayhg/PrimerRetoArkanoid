@@ -6,16 +6,18 @@ public class Pelota : MonoBehaviour
 {
     private Rigidbody pelotaRb;
     [SerializeField] private Vector3 velocidadInicial;
+    [SerializeField] private Transform posicionInicial;
     [SerializeField] private float velocidadFija = 10f;
-    [SerializeField] private int colisiones = 0;
-    [SerializeField] private int colisionesBloque2 = 2;
-
+    [SerializeField] GameObject jugador;
     private bool enMovimiento;
+    public delegate void VidaPerdida();
+    public static event VidaPerdida OnVidaPerdida;
 
     void Start()
     {
         pelotaRb = GetComponent<Rigidbody>();
         pelotaRb.velocity = Vector3.zero;
+        ResetearPelota();
     }
 
     void Update()
@@ -38,24 +40,24 @@ public class Pelota : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Bloque1"))
+    
+        if (other.CompareTag("LimiteInferior"))
         {
-            Destroy(collision.gameObject);
+            enMovimiento = false;
+            pelotaRb.velocity = Vector3.zero; 
+            ResetearPelota();
+
+            OnVidaPerdida?.Invoke();
         }
+    }
 
-        if (collision.gameObject.CompareTag("Bloque2"))
-        {
-            colisiones++;
-            if (colisiones >= colisionesBloque2)
-            {
-                Destroy(collision.gameObject);
-            }
-        }
-
-
-    }*/
+    private void ResetearPelota()
+    {
+        //transform.parent != null;
+        transform.position = posicionInicial.position;
+    }
 
     void CambioVelocidad()
     {
