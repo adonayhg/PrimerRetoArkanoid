@@ -8,7 +8,9 @@ public class Bloques : MonoBehaviour
     private int golpesActuales = 0;
         
     private Renderer bloqueRenderer;
-        
+
+    [SerializeField] private int puntosPorBloque = 10;
+
     void Start()
     {
             bloqueRenderer = GetComponent<Renderer>();
@@ -23,6 +25,7 @@ public class Bloques : MonoBehaviour
             if (golpesActuales >= golpesNecesarios)
             {
                     Destroy(gameObject);
+                    SistemaPuntos.instancia.AgregarPuntos(puntosPorBloque);
             }
         }
     }
