@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField] InterfazUsuario interfazUsuario;
     [SerializeField] GameObject pantallaGameOver;
 
     void Start()
@@ -29,8 +29,11 @@ public class GameManager : MonoBehaviour
 
     public void ReiniciarNivel()
     {
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        interfazUsuario.Jugar();
+
     }
 
     public void CerrarJuego()

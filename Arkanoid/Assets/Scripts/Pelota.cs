@@ -7,7 +7,9 @@ public class Pelota : MonoBehaviour
     private Rigidbody pelotaRb;
     [SerializeField] private Vector3 velocidadInicial;
     [SerializeField] private Transform posicionInicial;
+    [SerializeField] private Transform posicionInicialJugador;
     [SerializeField] private float velocidadFija = 10f;
+    [SerializeField] GameObject basejugador;
     [SerializeField] GameObject jugador;
     private bool enMovimiento;
     public delegate void VidaPerdida();
@@ -55,8 +57,10 @@ public class Pelota : MonoBehaviour
 
     private void ResetearPelota()
     {
-        //transform.parent != null;
-        transform.position = posicionInicial.position;
+        gameObject.transform.parent = basejugador.transform;
+        jugador.transform.position = posicionInicialJugador.transform.position;
+        transform.position = posicionInicial.transform .position;
+
     }
 
     void CambioVelocidad()

@@ -17,14 +17,13 @@ public class Bloques : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Pelota"))
+        {
+            golpesActuales++; 
+
+            if (golpesActuales >= golpesNecesarios)
             {
-                golpesActuales++; 
-
-                if (golpesActuales >= golpesNecesarios)
-                {
                     Destroy(gameObject);
-                }
             }
+        }
     }
-
 }
