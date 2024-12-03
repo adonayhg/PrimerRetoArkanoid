@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] InterfazUsuario interfazUsuario;
-    [SerializeField] GameObject menu;
     [SerializeField] TMPro.TextMeshProUGUI puntos;
     [SerializeField] TMPro.TextMeshProUGUI tiempo;
     [SerializeField] GameObject pantallaGameOver;
@@ -36,9 +34,8 @@ public class GameManager : MonoBehaviour
     {
         SistemaPuntos.instancia.ReiniciarPuntaje();
         Time.timeScale = 1f;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //DontDestroyOnLoad(menu);
-        interfazUsuario.Jugar();
 
     }
 
@@ -54,4 +51,5 @@ public class GameManager : MonoBehaviour
             textoPuntajeFinal.text = SistemaPuntos.instancia.ObtenerPuntaje().ToString();
         }
     }
+
 }

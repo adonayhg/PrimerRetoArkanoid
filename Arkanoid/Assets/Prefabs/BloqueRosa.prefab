@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ea251f34d5de28a46a5384a1a7db02d5,
         type: 3}
       propertyPath: m_TagString
-      value: Bloque 5
+      value: Bloque
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

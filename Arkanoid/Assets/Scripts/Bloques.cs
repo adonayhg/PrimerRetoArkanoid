@@ -26,6 +26,7 @@ public class Bloques : MonoBehaviour
             {
                     Destroy(gameObject);
                     SistemaPuntos.instancia.AgregarPuntos(puntosPorBloque);
+                    SistemaPuntos.instancia.DestruirBloques();
             }
         }
     }

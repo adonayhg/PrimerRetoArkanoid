@@ -4,15 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bloque1
-  - Bloque2
-  - Bloque 3
-  - Bloque 4
   - Bloque 5
   - Bloque 6
   - Bloque 7
   - Pelota
   - LimiteInferior
+  - Bloque
   layers:
   - Default
   - TransparentFX

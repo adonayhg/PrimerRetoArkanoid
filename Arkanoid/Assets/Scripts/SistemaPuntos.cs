@@ -7,7 +7,16 @@ public class SistemaPuntos : MonoBehaviour
     public static SistemaPuntos instancia;
 
     [SerializeField] private TMPro.TextMeshProUGUI textoPuntaje;
+    [SerializeField] GameObject popUpFelicidades;
+    [SerializeField] TMPro.TextMeshProUGUI puntos;
+    [SerializeField] TMPro.TextMeshProUGUI tiempo;
     private int puntajeActual = 0;
+    public int numeroBloques;
+
+    private void Start()
+    {
+        numeroBloques = GameObject.FindGameObjectsWithTag("Bloque").Length;
+    }
 
     void Awake()
     {
@@ -15,7 +24,6 @@ public class SistemaPuntos : MonoBehaviour
         if (instancia == null)
         {
             instancia = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -46,5 +54,15 @@ public class SistemaPuntos : MonoBehaviour
     {
         puntajeActual = 0;
         ActualizarUI();
+    }
+    public void DestruirBloques()
+    {
+        numeroBloques--;
+        if (numeroBloques <= 0)
+        {
+            popUpFelicidades.SetActive(true);
+            puntos.text = ObtenerPuntaje().ToString();
+
+        }
     }
 }

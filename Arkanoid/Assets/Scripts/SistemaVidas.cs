@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SistemaVidas : MonoBehaviour
 {
         [SerializeField] private int vidas = 3;
-        [SerializeField] private TMPro.TextMeshProUGUI textoVidas;
+        [SerializeField] TMPro.TextMeshProUGUI textoVidas;
         [SerializeField] private GameManager gameManager;
 
         void OnEnable()
@@ -39,7 +39,7 @@ public class SistemaVidas : MonoBehaviour
         {
             if (textoVidas != null)
             {
-                    textoVidas.text = "Vidas: " + vidas;
+                    textoVidas.text = " " +vidas;
             }
         }
 

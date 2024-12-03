@@ -55,7 +55,7 @@ public class Pelota : MonoBehaviour
         }
     }
 
-    private void ResetearPelota()
+    public void ResetearPelota()
     {
         gameObject.transform.parent = basejugador.transform;
         jugador.transform.position = posicionInicialJugador.transform.position;

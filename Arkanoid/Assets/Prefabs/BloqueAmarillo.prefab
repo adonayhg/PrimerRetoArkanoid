@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7f2a1a6c1a8d73f4dadf9c7ea60b0860,
         type: 3}
       propertyPath: m_TagString
-      value: Bloque1
+      value: Bloque
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c72910089b64704abaf912b3d8db330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  golpesNecesarios: 1
+  puntosPorBloque: 10
