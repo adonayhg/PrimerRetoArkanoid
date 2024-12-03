@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
         {
             puntos.text = SistemaPuntos.instancia.ObtenerPuntaje().ToString();
             pantallaGameOver.SetActive(true);
+            tiempo.text = SistemaPuntos.instancia.ObtenerTiempoFinal().ToString("00:00");
         }
-        Time.timeScale = 0f;
     }
 
     public void ReiniciarNivel()

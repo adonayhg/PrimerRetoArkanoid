@@ -31,10 +31,11 @@ public class SistemaVidas : MonoBehaviour
 
             if (vidas <= 0)
             {
-                gameManager.MostrarGameOver();
+            Time.timeScale = 0f;
+            gameManager.MostrarGameOver();
 
             }
-        }
+    }
         private void ActualizarTextoVidas()
         {
             if (textoVidas != null)

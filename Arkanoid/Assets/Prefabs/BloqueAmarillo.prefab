@@ -126,4 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   golpesNecesarios: 1
-  puntosPorBloque: 10
+  puntosPorBloque: 5

@@ -13,9 +13,22 @@ public class SistemaPuntos : MonoBehaviour
     private int puntajeActual = 0;
     public int numeroBloques;
 
-    private void Start()
+    public float tiempoTranscurrido = 0f;
+    [SerializeField] TMPro.TextMeshProUGUI textoTiempo;
+
+    bool nivelEnCurso = false;
+
+    void Start()
     {
         numeroBloques = GameObject.FindGameObjectsWithTag("Bloque").Length;
+    }
+    void Update()
+    {
+        if (nivelEnCurso)
+        {
+            tiempoTranscurrido += Time.deltaTime;
+            ActualizarTextoTiempo();
+        }
     }
 
     void Awake()
@@ -41,7 +54,7 @@ public class SistemaPuntos : MonoBehaviour
     {
         if (textoPuntaje != null)
         {
-            textoPuntaje.text = "Puntos: " + puntajeActual;
+            textoPuntaje.text = " " + puntajeActual;
         }
     }
 
@@ -64,5 +77,28 @@ public class SistemaPuntos : MonoBehaviour
             puntos.text = ObtenerPuntaje().ToString();
 
         }
+    }
+
+    public void ActualizarTextoTiempo()
+    {
+        int minutos = Mathf.FloorToInt(tiempoTranscurrido / 60f);
+        int segundos = Mathf.FloorToInt(tiempoTranscurrido % 60f);
+
+        textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+    }
+
+    public float ObtenerTiempoFinal()
+    {
+        return tiempoTranscurrido;
+    }
+
+    public void DetenerCronometro()
+    {
+        nivelEnCurso = false;
+    }
+
+    public void EmpezarCronometro()
+    {
+        nivelEnCurso = true;
     }
 }

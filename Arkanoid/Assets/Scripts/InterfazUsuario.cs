@@ -18,6 +18,7 @@ public class InterfazUsuario : MonoBehaviour
     [SerializeField] bool pausaCorriendo;
     [SerializeField] GameObject vidas;
     [SerializeField] GameObject puntos;
+    [SerializeField] GameObject tiempo;
 
 
     void Start()
@@ -30,6 +31,7 @@ public class InterfazUsuario : MonoBehaviour
         pausaCorriendo = false;
         vidas.SetActive(false);
         puntos.SetActive(false);
+        tiempo.SetActive(false);
     }
 
     public void ChangeSlider(float valor)
@@ -54,6 +56,8 @@ public class InterfazUsuario : MonoBehaviour
         menu.SetActive(false);
         vidas.SetActive(true);
         puntos.SetActive(true);
+        tiempo.SetActive(true);
+        SistemaPuntos.instancia.EmpezarCronometro();
     }
 
     public void Opciones()
