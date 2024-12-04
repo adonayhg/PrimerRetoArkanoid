@@ -74,8 +74,10 @@ public class SistemaPuntos : MonoBehaviour
         if (numeroBloques <= 0)
         {
             popUpFelicidades.SetActive(true);
+            DetenerCronometro();
             puntos.text = ObtenerPuntaje().ToString();
-
+            tiempo.text = ObtenerTiempoFinal().ToString("00:00");
+            DetenerCronometro();
         }
     }
 

@@ -10,6 +10,7 @@ TagManager:
   - Pelota
   - LimiteInferior
   - Bloque
+  - Jugador
   layers:
   - Default
   - TransparentFX

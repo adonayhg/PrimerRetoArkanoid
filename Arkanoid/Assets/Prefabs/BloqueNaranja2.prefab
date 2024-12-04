@@ -127,3 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   golpesNecesarios: 2
   puntosPorBloque: 20
+  prefabPowerUp: {fileID: 3616346950818071069, guid: 176dcceba692bdd4aaabd6f4274aaa43,
+    type: 3}
+  probabilidadPowerUp: 0.3

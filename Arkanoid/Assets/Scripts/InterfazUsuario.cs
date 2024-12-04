@@ -19,6 +19,7 @@ public class InterfazUsuario : MonoBehaviour
     [SerializeField] GameObject vidas;
     [SerializeField] GameObject puntos;
     [SerializeField] GameObject tiempo;
+    [SerializeField] GameObject popUpElegirNivel;
 
 
     void Start()
@@ -32,6 +33,9 @@ public class InterfazUsuario : MonoBehaviour
         vidas.SetActive(false);
         puntos.SetActive(false);
         tiempo.SetActive(false);
+        Time.timeScale = 0f;
+        popUpElegirNivel.SetActive(false);
+
     }
 
     public void ChangeSlider(float valor)
@@ -41,7 +45,6 @@ public class InterfazUsuario : MonoBehaviour
         AudioListener.volume = sliderMusica.value;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf)
@@ -53,11 +56,27 @@ public class InterfazUsuario : MonoBehaviour
     public void Jugar()
     {
         botonesMenu.SetActive(false);
+        popUpElegirNivel.SetActive(true);
+
+    }
+
+    public void JugarNivel()
+    {
         menu.SetActive(false);
         vidas.SetActive(true);
         puntos.SetActive(true);
         tiempo.SetActive(true);
         SistemaPuntos.instancia.EmpezarCronometro();
+        Time.timeScale = 1f;
+    }
+    public void JugarNivelAleatorio()
+    {
+        menu.SetActive(false);
+        vidas.SetActive(true);
+        puntos.SetActive(true);
+        tiempo.SetActive(true);
+        SistemaPuntos.instancia.EmpezarCronometro();
+        Time.timeScale = 1f;
     }
 
     public void Opciones()

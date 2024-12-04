@@ -15,6 +15,7 @@ public class Pelota : MonoBehaviour
     public delegate void VidaPerdida();
     public static event VidaPerdida OnVidaPerdida;
 
+
     void Start()
     {
         pelotaRb = GetComponent<Rigidbody>();
@@ -39,6 +40,14 @@ public class Pelota : MonoBehaviour
         if (enMovimiento)
         {
             CambioVelocidad();
+        }
+        if (enModoDestructivo)
+        {
+            tiempoModoDestructivo -= Time.deltaTime;
+            if (tiempoModoDestructivo <= 0)
+            {
+                DesactivarModoDestructivo();
+            }
         }
     }
 
@@ -80,5 +89,30 @@ public class Pelota : MonoBehaviour
             pelotaRb.velocity += new Vector3(0f, velocidadDelta, 0f);
         }
     }
-}
+    private bool enModoDestructivo = false;
+    private float tiempoModoDestructivo = 0f;
 
+    public void ActivarModoDestructivo(float duracion = 10)
+    {
+        enModoDestructivo = true;
+        tiempoModoDestructivo = duracion;
+        Debug.Log("Modo destructivo activado por " + duracion + " segundos.");
+    }
+
+    private void DesactivarModoDestructivo()
+    {
+        enModoDestructivo = false;
+        Debug.Log("Modo destructivo desactivado.");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bloque"))
+        {
+            if (enModoDestructivo)
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+}
