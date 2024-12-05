@@ -9,8 +9,6 @@ public class Jugador : MonoBehaviour
     [SerializeField] float desplazamientoJugadorDer = -7f;
     [SerializeField] GameObject jugadorDerecha;
     [SerializeField] GameObject jugadorIzquierda;
-    private bool enModoDestructivo = false;
-    private float tiempoModoDestructivo = 0f;
 
 
     void Start()
@@ -30,6 +28,9 @@ public class Jugador : MonoBehaviour
             LeanTween.rotateZ(jugadorDerecha, 360, 1).setEase(LeanTweenType.easeInOutSine).setLoopPingPong();
             LeanTween.rotateZ(jugadorIzquierda, 360, 1).setEase(LeanTweenType.easeInOutSine).setLoopPingPong();
         }
+
+
+
     }
 
     [SerializeField] private Pelota pelota;
@@ -38,7 +39,22 @@ public class Jugador : MonoBehaviour
     public void ActivarEfectoPowerUp()
     {
             pelota.ActivarModoDestructivo(5f);
-
-        Debug.Log("Power-Up Activado: Modo destructivo");
     }
+
+
+    public void PowerUpInvertido()
+    {
+        pelota.ActivarModoInvertido();
+        velocidadJugador = 15;
+    }
+
+    public void DesactivarModoInvertido()
+    {
+        velocidadJugador = -15;
+    }
+    public void ActivarPowerUpSlow()
+    {
+        pelota.PowerUpSlow();
+    }
+
 }

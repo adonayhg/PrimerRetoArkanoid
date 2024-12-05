@@ -21,7 +21,6 @@ public class InterfazUsuario : MonoBehaviour
     [SerializeField] GameObject tiempo;
     [SerializeField] GameObject popUpElegirNivel;
 
-
     void Start()
     {
         menu.SetActive(true);
@@ -113,6 +112,7 @@ public class InterfazUsuario : MonoBehaviour
         arkanoid.SetActive(true);
         Time.timeScale = 0f;
         pausaCorriendo = true;
+        popUpElegirNivel.SetActive(false);
     }
 
     public void ReanudarJuego()

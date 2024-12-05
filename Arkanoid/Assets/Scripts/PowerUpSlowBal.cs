@@ -1,30 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpPelotaDestructora : MonoBehaviour
+public class PowerUpSlowBal : MonoBehaviour
 {
-
-    void Start()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Jugador"))
         {
             Jugador jugador = other.GetComponent<Jugador>();
-            jugador.ActivarEfectoPowerUp();
+            jugador.ActivarPowerUpSlow();
 
             Destroy(gameObject);
         }
     }
-
-    private void DestruirPowerUp()
-    {
-        Destroy(gameObject);
-    }
-
 }

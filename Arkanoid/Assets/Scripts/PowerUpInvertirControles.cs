@@ -1,30 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpPelotaDestructora : MonoBehaviour
+public class PowerUpInvertirControles : MonoBehaviour
 {
-
-    void Start()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Jugador"))
         {
             Jugador jugador = other.GetComponent<Jugador>();
-            jugador.ActivarEfectoPowerUp();
+            jugador.PowerUpInvertido();
 
             Destroy(gameObject);
         }
-    }
-
-    private void DestruirPowerUp()
-    {
-        Destroy(gameObject);
     }
 
 }

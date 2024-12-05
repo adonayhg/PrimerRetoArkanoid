@@ -11,9 +11,12 @@ public class Bloques : MonoBehaviour
 
      [SerializeField] private int puntosPorBloque = 10;
      [SerializeField] private GameObject prefabPowerUp;
-     [SerializeField] private float probabilidadPowerUp = 0.3f;
+     [SerializeField] private GameObject prefabPowerUpInvertido;
+    [SerializeField] private GameObject prefabPowerUpSlow;
+    [SerializeField] private float probabilidadPowerUp = 0.3f;
 
-     void Start()
+
+    void Start()
      {
              bloqueRenderer = GetComponent<Renderer>();
      }
@@ -39,6 +42,8 @@ public class Bloques : MonoBehaviour
         if (golpesActuales >= golpesNecesarios)
         {
             GenerarPowerUp();
+            GenerarPowerUpInvertido();
+            GenerarPowerUpSlow();
             Destroy(gameObject); 
         }
     }
@@ -50,4 +55,21 @@ public class Bloques : MonoBehaviour
             Instantiate(prefabPowerUp, transform.position, Quaternion.identity);
         }
     }
+
+    
+    private void GenerarPowerUpInvertido()
+    {
+        if (Random.value <= probabilidadPowerUp && prefabPowerUp != null)
+        {
+            Instantiate(prefabPowerUpInvertido, transform.position, Quaternion.identity);
+        }
+    }
+    private void GenerarPowerUpSlow()
+    {
+        if (Random.value <= probabilidadPowerUp && prefabPowerUp != null)
+        {
+            Instantiate(prefabPowerUpSlow, transform.position, Quaternion.identity);
+        }
+    }
+
 }

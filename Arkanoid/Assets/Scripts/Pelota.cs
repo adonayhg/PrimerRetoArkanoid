@@ -14,6 +14,11 @@ public class Pelota : MonoBehaviour
     private bool enMovimiento;
     public delegate void VidaPerdida();
     public static event VidaPerdida OnVidaPerdida;
+    private bool modoInverso = false;
+    private float tiempoModoInvertido = 0f;
+    private bool modoSlow = false;
+    private float tiempoModoSlow = 0f;
+    [SerializeField] private Jugador jugadorScript;
 
 
     void Start()
@@ -21,6 +26,8 @@ public class Pelota : MonoBehaviour
         pelotaRb = GetComponent<Rigidbody>();
         pelotaRb.velocity = Vector3.zero;
         ResetearPelota();
+        modoInverso = false;
+        modoSlow = false;
     }
 
     void Update()
@@ -47,6 +54,22 @@ public class Pelota : MonoBehaviour
             if (tiempoModoDestructivo <= 0)
             {
                 DesactivarModoDestructivo();
+            }
+        }
+        if (modoInverso == true)
+        {
+            tiempoModoInvertido -= Time.deltaTime;
+            if (tiempoModoInvertido <= 0)
+            {
+                jugadorScript.DesactivarModoInvertido();
+            }
+        }
+        if (modoSlow == true)
+        {
+            tiempoModoSlow -= Time.deltaTime;
+            if (tiempoModoSlow <= 0)
+            {
+                DesactivarModoSlow();
             }
         }
     }
@@ -96,13 +119,11 @@ public class Pelota : MonoBehaviour
     {
         enModoDestructivo = true;
         tiempoModoDestructivo = duracion;
-        Debug.Log("Modo destructivo activado por " + duracion + " segundos.");
     }
 
     private void DesactivarModoDestructivo()
     {
         enModoDestructivo = false;
-        Debug.Log("Modo destructivo desactivado.");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -114,5 +135,21 @@ public class Pelota : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+    }
+
+    public void ActivarModoInvertido()
+    {
+        modoInverso = true;
+        tiempoModoInvertido = 10;
+    }
+
+    public void PowerUpSlow()
+    {
+        modoSlow = true;
+        velocidadFija = 10;
+    }
+    private void DesactivarModoSlow()
+    {
+        modoSlow = false;
     }
 }

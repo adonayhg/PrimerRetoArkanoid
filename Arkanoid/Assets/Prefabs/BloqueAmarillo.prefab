@@ -129,4 +129,8 @@ MonoBehaviour:
   puntosPorBloque: 5
   prefabPowerUp: {fileID: 3616346950818071069, guid: 176dcceba692bdd4aaabd6f4274aaa43,
     type: 3}
+  prefabPowerUpInvertido: {fileID: 5738709771524664385, guid: 92e33ca6c92e0ba4e90e5e0fb0955b79,
+    type: 3}
+  prefabPowerUpSlow: {fileID: 8807578159691641943, guid: 92faf9bdc294e8141bf2d593e238cc0f,
+    type: 3}
   probabilidadPowerUp: 0.3
